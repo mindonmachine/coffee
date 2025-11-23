@@ -183,6 +183,7 @@
   </div>
 
   <button onclick="sendOrderWhatsApp()">Order via WhatsApp</button>
+<div id="toast" style="visibility:hidden; min-width:200px; background:#2ecc71; color:white; text-align:center; border-radius:10px; padding:12px; position:fixed; bottom:30px; left:50%; transform:translateX(-50%); font-weight:bold; box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:999;">Opening WhatsApp…</div>
 </div>
 
 
@@ -191,13 +192,29 @@
 
 </body>
   <script>
-    
-    function sendOrderWhatsApp() {
+function sendOrderWhatsApp() {
   var base = document.querySelector('input[name="base"]:checked');
   var chicory = document.querySelector('input[name="chicory"]:checked');
   var flavors = document.querySelectorAll('.flv:checked');
   var flvList = [];
   flavors.forEach(function(f){ flvList.push(f.value); });
+
+  var message = "Coffee Order:\n" +
+                "Base: " + (base ? base.value : "Not selected") + "\n" +
+                "Chicory: " + (chicory ? chicory.value : "Not selected") + "\n" +
+                "Flavors: " + (flvList.length ? flvList.join(', ') : "None");
+
+  showToast();
+  setTimeout(function(){
+    window.open('https://wa.me/9972994045?text=' + encodeURIComponent(message), '_blank');
+  }, 900);
+}
+
+function showToast(){
+  var t = document.getElementById('toast');
+  t.style.visibility = 'visible';
+  setTimeout(function(){ t.style.visibility = 'hidden'; }, 2000);
+});
 
   var message = "Coffee Order:
 " +
