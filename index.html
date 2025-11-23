@@ -124,7 +124,6 @@
   <div class="container">
     <div class="section">
       <h3>Choose Your Coffee Base</h3>
-      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="None"> No Coffee</label>
       <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="1kg"> 1 KG</label>
       <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="2kg"> 2 KG</label>
       <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="5kg"> 5 KG</label>
@@ -140,10 +139,10 @@
   
     <div class="section">
       <h3>Add Flavors</h3>
-      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="None"> No Flavors</label>
-      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="Cinnamon"> Cinnamon</label>
-      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="Elaichi"> Elaichi</label>
-      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="Fenugreek"> Fenugreek</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="flavor" class="flv" value="None"> No Flavors</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="flavor" class="flv" value="Cinnamon"> Cinnamon</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="flavor" class="flv" value="Elaichi"> Elaichi</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="flavor" class="flv" value="Fenugreek"> Fenugreek</label>
     </div>
   
     <button onclick="sendOrderWhatsApp()">Order via WhatsApp</button>
@@ -166,10 +165,13 @@
     var flvList = [];
     flavors.forEach(f => flvList.push(f.value));
 
-    var message = "Coffee Order:\n" +
-                  "Base: " + (base ? base.value : "Not selected") + "\n" +
-                  "Chicory: " + (chicory ? chicory.value : "Not selected") + "\n" +
-                  "Flavors: " + (flvList.length ? flvList.join(', ') : "None");
+    var message = "Coffee Order:
+" +
+                  "Base: " + (base ? base.value : "Not selected") + "
+" +
+                  "Chicory: " + (chicory ? chicory.value : "Not selected") + "
+" +
+                  "Flavor: " + (flvList.length ? flvList[0] : "None");
 
     showToast();
     setTimeout(() => {
