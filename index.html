@@ -1,230 +1,183 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coffee Blend Builder</title>
-<style>
-  body {
-    margin: 0;
-    font-family: 'Nunito', 'Roboto', sans-serif;
-    background: linear-gradient(180deg, #3b2416, #2a1a10);
-    color: #f8efe6;
-  }
-  header {
-    text-align: center;
-    padding: 40px 20px;
-  }
-  header h1 {
-    font-size: 32px;
-    font-weight: 700;
-  }
-  header p {
-    opacity: 0.8;
-    margin-top: -10px;
-  }
-  .container {
-    width: 90%;
-    max-width: 520px;
-    margin: auto;
-    background: #4b2e18;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
-  }
-  .section {
-    background: #5e3b20;
-    padding: 18px 20px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    transition: 0.2s;
-  }
-  .section:hover {
-    background: #6a4425;
-  }
-  h3 {
-    margin-bottom: 12px;
-    font-size: 20px;
-  }
-  label {
-    display: block;
-    margin-bottom: 8px;
-    cursor: pointer;
-  }
-  input[type="radio"], input[type="checkbox"] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    display: inline-block;
-    position: relative;
-    top: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  input[type="radio"]:checked, input[type="checkbox"]:checked {
-    background-color: #2ecc71;
-    border-color: #2ecc71;
-  }
-  input[type="radio"]:checked::after, input[type="checkbox"]:checked::after {
-    content: '✔';
-    color: white;
-    font-size: 14px;
-    position: absolute;
-    top: -1px;
-    left: 3px;
-    font-weight: bold;
-  }
-  button {
-    width: 100%;
-    padding: 16px;
-    margin-top: 10px;
-    background: #f4d7a1;
-    color: #4b2e18;
-    font-weight: 700;
-    font-size: 18px;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  button:hover {
-    background: #ffdfb7;
-  }
-
-  @media (min-width: 600px) {
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Blend Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(180deg, #3b2416, #2a1a10);
+      color: #f8efe6;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 520px;
+      margin: auto;
+      background: #4b2e18;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    }
     .section {
-      border-bottom: 1.5px solid #ffffff55;
-      padding-bottom: 20px;
+      background: #5e3b20;
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
     }
-    .section:last-of-type {
-      border-bottom: none;
+    input[type="radio"], input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      margin-right: 10px;
+      vertical-align: middle;
     }
-  }
-  @keyframes steamFloat {
-    0% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(-6px); opacity: 0.7; }
-    100% { transform: translateY(0); opacity: 1; }
-  }
-
-  /* Coffee Aroma Wave Animation */
-  @keyframes aromaWave {
-    0% { d: path('M26 10C24 14 28 16 26 20'); opacity: 0.2; }
-    50% { d: path('M26 8C23 14 29 18 26 22'); opacity: 0.5; }
-    100% { d: path('M26 10C24 14 28 16 26 20'); opacity: 0.2; }
-  }
-  .aroma {
-    animation: aromaWave 4s ease-in-out infinite;
-    opacity: 0.3;
-  } {
-    0% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(-6px); opacity: 0.7; }
-    100% { transform: translateY(0); opacity: 1; }
-  }
-  .steam {
-    animation: steamFloat 2.5s ease-in-out infinite;
+    input[type="radio"]:checked, input[type="checkbox"]:checked {
+      background-color: #2ecc71;
+      border-color: #2ecc71;
+    }
+    input[type="radio"]:checked::after, input[type="checkbox"]:checked::after {
+      content: '✔';
+      color: white;
+      font-size: 14px;
+      position: absolute;
+      left: 3px;
+      top: -1px;
+    }
+    button {
+      width: 100%;
+      padding: 16px;
+      margin-top: 10px;
+      background: #f4d7a1;
+      color: #4b2e18;
+      font-weight: bold;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+    @keyframes steamFloat {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(-6px); opacity: 0.7; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes aromaWave {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.5; }
+      100% { opacity: 0.2; }
+    }
+    .aroma {
+      animation: aromaWave 4s ease-in-out infinite;
+      opacity: 0.3;
+    }
+    .steam {
+      animation: steamFloat 2.5s ease-in-out infinite;
+    }
+  
+    #toast {
+      visibility: hidden;
+      min-width: 200px;
+      background: #2ecc71;
+      color: white;
+      text-align: center;
+      border-radius: 10px;
+      padding: 12px;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+  </style>
+  </head>
+  <body>
+  <header>
+    <div style="position:relative; display:flex; justify-content:center; margin-bottom:15px;">
+      <div style="position:absolute; width:120px; height:120px; border-radius:50%; background:radial-gradient(circle, rgba(255,240,220,0.35), rgba(0,0,0,0)); top:-10px; filter: blur(18px);"></div>
+      <svg width="80" height="80" viewBox="0 0 64 64" fill="none">
+        <path d="M20 22C20 15 44 15 44 22C44 32 20 32 20 22Z" stroke="#f8efe6" stroke-width="3"/>
+        <path d="M18 28H46V36C46 45 38 52 32 52C26 52 18 45 18 36V28Z" stroke="#f8efe6" stroke-width="3"/>
+        <path d="M46 30H52C56 30 56 40 50 40H46" stroke="#f8efe6" stroke-width="3"/>
+        <path class="steam aroma" d="M26 10C24 14 28 16 26 20" stroke="#f8efe6" stroke-width="3"/>
+        <path class="steam" d="M34 10C32 14 36 16 34 20" stroke="#f8efe6" stroke-width="3" style="animation-delay:0.3s"/>
+        <path class="steam" d="M40 12C38 15 42 17 40 20" stroke="#f8efe6" stroke-width="3" style="animation-delay:0.6s"/>
+      </svg>
+    </div>
+    <h1>Create Your Custom Coffee Blend</h1>
+    <p>Freshly roasted. Delivered to your doorstep.</p>
+  </header>
+  
+  <div class="container">
+    <div class="section">
+      <h3>Choose Your Coffee Base</h3>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="None"> No Coffee</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="1kg"> 1 KG</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="2kg"> 2 KG</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="base" value="5kg"> 5 KG</label>
+    </div>
+  
+    <div class="section">
+      <h3>Chicory Blend (%)</h3>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="chicory" value="None"> No Chicory</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="chicory" value="20"> 20%</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="chicory" value="40"> 40%</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="radio" name="chicory" value="60"> 60%</label>
+    </div>
+  
+    <div class="section">
+      <h3>Add Flavors</h3>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="None"> No Flavors</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="Cinnamon"> Cinnamon</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="Elaichi"> Elaichi</label>
+      <label style="display:inline-flex; align-items:flex-end; gap:4px; margin-right:10px;"><input type="checkbox" class="flv" value="Fenugreek"> Fenugreek</label>
+    </div>
+  
+    <button onclick="sendOrderWhatsApp()">Order via WhatsApp</button>
+    <div id="toast">Opening WhatsApp…</div>
+  </div>
+  
+  <footer style="text-align:center; padding:25px 0; opacity:0.7; font-size:14px;">© 2025 Coffee Blend Builder. All Rights Reserved.</footer>
+  
+  <script>
+  function showToast() {
+    var t = document.getElementById('toast');
+    t.style.visibility = 'visible';
+    setTimeout(() => { t.style.visibility = 'hidden'; }, 2000);
   }
   
-</style>
-</head>
-<body>
+  function sendOrderWhatsApp() {
+    var base = document.querySelector('input[name="base"]:checked');
+    var chicory = document.querySelector('input[name="chicory"]:checked');
+    var flavors = document.querySelectorAll('.flv:checked');
+    var flvList = [];
+    flavors.forEach(f => flvList.push(f.value));
 
-<header>
-  <!-- Coffee Cup With Steam Icon + Glow + Wave -->
-  <div style="position:relative; display:flex; justify-content:center; margin-bottom:15px;">
-    <!-- Soft Glow Behind Cup -->
-    <div style="position:absolute; width:120px; height:120px; border-radius:50%; background:radial-gradient(circle, rgba(255,240,220,0.35), rgba(0,0,0,0)); top: -10px; filter: blur(18px);"></div>
-    <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 22C20 15 44 15 44 22C44 32 20 32 20 22Z" stroke="#f8efe6" stroke-width="3"/>
-      <path d="M18 28H46V36C46 45 38 52 32 52C26 52 18 45 18 36V28Z" stroke="#f8efe6" stroke-width="3"/>
-      <path d="M46 30H52C56 30 56 40 50 40H46" stroke="#f8efe6" stroke-width="3"/>
-      <!-- Steam Lines (Animated Steam + Aroma Waves) -->
-      <path class="steam aroma" d="M26 10C24 14 28 16 26 20" stroke="#f8efe6" stroke-width="3" stroke-linecap="round"/>
-      <path class="steam" d="M34 10C32 14 36 16 34 20" stroke="#f8efe6" stroke-width="3" stroke-linecap="round" style="animation-delay:0.3s"/>
-      <path class="steam" d="M40 12C38 15 42 17 40 20" stroke="#f8efe6" stroke-width="3" stroke-linecap="round" style="animation-delay:0.6s" stroke="#f8efe6" stroke-width="3" stroke-linecap="round"/>
-      <path class="steam" d="M34 10C32 14 36 16 34 20" stroke="#f8efe6" stroke-width="3" stroke-linecap="round" style="animation-delay:0.3s"/>
-      <path class="steam" d="M40 12C38 15 42 17 40 20" stroke="#f8efe6" stroke-width="3" stroke-linecap="round" style="animation-delay:0.6s" stroke="#f8efe6" stroke-width="3" stroke-linecap="round"/>
-      <path d="M34 10C32 14 36 16 34 20" stroke="#f8efe6" stroke-width="3" stroke-linecap="round"/>
-      <path d="M40 12C38 15 42 17 40 20" stroke="#f8efe6" stroke-width="3" stroke-linecap="round"/>
-    </svg>
-  </div>
-  <h1 style="margin-top:-10px;">Create Your Custom Coffee Blend</h1>
-  <p>Freshly roasted. Delivered to your doorstep.</p>
-</header>
+    var message = "Coffee Order:\n" +
+                  "Base: " + (base ? base.value : "Not selected") + "\n" +
+                  "Chicory: " + (chicory ? chicory.value : "Not selected") + "\n" +
+                  "Flavors: " + (flvList.length ? flvList.join(', ') : "None");
 
-
-
-<div class="container">
-
-  <div class="section">
-    <h3>Choose Your Coffee Base</h3>
-    <label><input type="radio" name="base" value="None"> No Coffee (Test Only)</label>
-    <label><input type="radio" name="base" value="1kg"> 1 KG</label>
-    <label><input type="radio" name="base" value="2kg"> 2 KG</label>
-    <label><input type="radio" name="base" value="5kg"> 5 KG</label>
-  </div>
-
-  <div class="section">
-    <h3>Chicory Blend (%)</h3>
-    <label><input type="radio" name="chicory" value="None"> No Chicory</label>
-    <label><input type="radio" name="chicory" value="20"> 20%</label>
-    <label><input type="radio" name="chicory" value="40"> 40%</label>
-    <label><input type="radio" name="chicory" value="60"> 60%</label>
-  </div>
-
-  <div class="section">
-    <h3>Add Flavors</h3>
-    <label><input type="checkbox" value="None" class="flv"> No Flavors</label>
-    <label><input type="checkbox" value="Cinnamon" class="flv"> Cinnamon</label>
-    <label><input type="checkbox" value="Elaichi" class="flv"> Elaichi</label>
-    <label><input type="checkbox" value="Fenugreek" class="flv"> Fenugreek</label>
-  </div>
-
-  <button onclick="sendOrderWhatsApp()">Order via WhatsApp</button>
-<div id="toast" style="visibility:hidden; min-width:200px; background:#2ecc71; color:white; text-align:center; border-radius:10px; padding:12px; position:fixed; bottom:30px; left:50%; transform:translateX(-50%); font-weight:bold; box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:999;">Opening WhatsApp…</div>
-</div>
-
-
-
-<footer style="text-align:center; padding:25px 0; opacity:0.7; font-size:14px;">© 2025 Coffee Blend Builder. All Rights Reserved.</footer>
-
-</body>
-  <script>
-function sendOrderWhatsApp() {
-  var base = document.querySelector('input[name="base"]:checked');
-  var chicory = document.querySelector('input[name="chicory"]:checked');
-  var flavors = document.querySelectorAll('.flv:checked');
-  var flvList = [];
-  flavors.forEach(function(f){ flvList.push(f.value); });
-
-  var message = "Coffee Order:\n" +
-                "Base: " + (base ? base.value : "Not selected") + "\n" +
-                "Chicory: " + (chicory ? chicory.value : "Not selected") + "\n" +
-                "Flavors: " + (flvList.length ? flvList.join(', ') : "None");
-
-  showToast();
-  setTimeout(function(){
-    window.open('https://wa.me/9972994045?text=' + encodeURIComponent(message), '_blank');
-  }, 900);
-}
-
-function showToast(){
-  var t = document.getElementById('toast');
-  t.style.visibility = 'visible';
-  setTimeout(function(){ t.style.visibility = 'hidden'; }, 2000);
-});
-
-  var message = "Coffee Order:
-" +
-                "Base: " + (base ? base.value : "Not selected") + "
-" +
-                "Chicory: " + (chicory ? chicory.value : "Not selected") + "
-" +
-                "Flavors: " + (flvList.length ? flvList.join(', ') : "None");
-
-  window.open('https://wa.me/9972994045?text=' + encodeURIComponent(message), '_blank');
-}
+    showToast();
+    setTimeout(() => {
+      var encodedMsg = encodeURIComponent(message);
+      var whatsappUrl = "https://wa.me/?text=" + encodedMsg;
+      window.open(whatsappUrl, "_blank");
+    }, 800);
+  }
 </script>
+</body>
 </html>
