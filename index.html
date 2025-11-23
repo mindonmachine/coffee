@@ -182,15 +182,32 @@
     <label><input type="checkbox" value="Fenugreek" class="flv"> Fenugreek</label>
   </div>
 
-  <button onclick="sendWhatsApp()">Send on WhatsApp</button>
+  <button onclick="sendOrderWhatsApp()">Order via WhatsApp</button>
 </div>
-
-
 
 
 
 <footer style="text-align:center; padding:25px 0; opacity:0.7; font-size:14px;">© 2025 Coffee Blend Builder. All Rights Reserved.</footer>
 
 </body>
+  <script>
+    
+    function sendOrderWhatsApp() {
+  var base = document.querySelector('input[name="base"]:checked');
+  var chicory = document.querySelector('input[name="chicory"]:checked');
+  var flavors = document.querySelectorAll('.flv:checked');
+  var flvList = [];
+  flavors.forEach(function(f){ flvList.push(f.value); });
+
+  var message = "Coffee Order:
+" +
+                "Base: " + (base ? base.value : "Not selected") + "
+" +
+                "Chicory: " + (chicory ? chicory.value : "Not selected") + "
+" +
+                "Flavors: " + (flvList.length ? flvList.join(', ') : "None");
+
+  window.open('https://wa.me/9972994045?text=' + encodeURIComponent(message), '_blank');
+}
+</script>
 </html>
-        v
